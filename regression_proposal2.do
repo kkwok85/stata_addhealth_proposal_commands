@@ -4,7 +4,8 @@ set maxvar 32767
 use "C:\Users\Julian.Julian-PC\Desktop\ICPSR_21600_w2\DS0003\trial_w2", clear
 
 
-* change this
+* change this remember to change file name
+
 merge 1:1 AID using "C:\Users\Julian.Julian-PC\Desktop\ICPSR_21600_w4\DS0023\trial_w4.dta", gen(merge_w2_w4)
 merge 1:1 AID using "C:\Users\Julian.Julian-PC\Desktop\ICPSR_21600\DS0001\trial_w1.dta", gen(merge_w1_w2_w4)
 
