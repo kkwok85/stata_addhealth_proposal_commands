@@ -166,9 +166,9 @@ foreach dep in $definition {
 
 
 
-use "C:\Users\Julian.Julian-PC\Desktop\ICPSR_21600\DS0001\trial.dta", clear
+use "C:\Users\Julian.Julian-PC\Desktop\Addhealth_data\ICPSR_21600\DS0001\trial_w1.dta", clear
 
-merge 1:1 AID using "C:\Users\Julian.Julian-PC\Desktop\ICPSR_21600_w4\DS0023\trial.dta"
+merge 1:1 AID using "C:\Users\Julian.Julian-PC\Desktop\Addhealth_data\ICPSR_21600_w4\DS0023\trial_w4.dta"
 
 H1NM4 S13Q4
 
@@ -182,11 +182,24 @@ reg hrs_work_week personality_not_thought_future own_computer $control_variables
 
 
 reg hrs_surf_net_week i.personality_not_thought_future own_computer typical_week $control_variables  H1RM1 H1RF1 S11 S17 H4TR1
+margins personality_not_thought_future
 reg hrs_play_computer_week i.personality_not_thought_future own_computer typical_week $control_variables H1RM1 H1RF1 S11 S17 H4TR1
+margins personality_not_thought_future
 reg hrs_watch_tv_week i.personality_not_thought_future own_computer typical_week $control_variables H1RM1 H1RF1 S11 S17 H4TR1
+margins personality_not_thought_future
 reg times_gym_strength_training_week i.personality_not_thought_future typical_week own_computer $control_variables H1RM1 H1RF1 S11 S17 H4TR1
+margins personality_not_thought_future
 reg times_walk_exercise_week i.personality_not_thought_future typical_week own_computer typical_week $control_variables H1RM1 H1RF1 S11 S17 H4TR1
+margins personality_not_thought_future
 reg hrs_work_week i.personality_not_thought_future own_computer typical_week $control_variables H1RM1 H1RF1 S11 S17 H4TR1
+margins personality_not_thought_future
+
+tabulate personality_not_thought_future, summarize(hrs_surf_net_week)
+tabulate personality_not_thought_future, summarize(hrs_play_computer_week)
+tabulate personality_not_thought_future, summarize(hrs_watch_tv_week)
+tabulate personality_not_thought_future, summarize(times_gym_strength_training_week)
+tabulate personality_not_thought_future, summarize(hrs_work_week)
+
 
 
 reg hrs_surf_net_week personality_not_thought_future##own_computer $control_variables  H1RM1 H1RF1 S11 S17 H4TR1
@@ -198,3 +211,9 @@ reg hrs_work_week personality_not_thought_future##own_computer $control_variable
 
 
 
+reg hrs_surf_net_week ib(none).personality_not_thought_future own_computer typical_week $control_variables  H1RM1 H1RF1 S11 S17 H4TR1, noc
+reg hrs_play_computer_week ib(none).personality_not_thought_future own_computer typical_week $control_variables H1RM1 H1RF1 S11 S17 H4TR1, noc
+reg hrs_watch_tv_week ib(none).personality_not_thought_future own_computer typical_week $control_variables H1RM1 H1RF1 S11 S17 H4TR1, noc
+reg times_gym_strength_training_week ib(none).personality_not_thought_future typical_week own_computer $control_variables H1RM1 H1RF1 S11 S17 H4TR1, noc
+reg times_walk_exercise_week ib(none).personality_not_thought_future typical_week own_computer typical_week $control_variables H1RM1 H1RF1 S11 S17 H4TR1, noc
+reg hrs_work_week ib(none).personality_not_thought_future own_computer typical_week $control_variables H1RM1 H1RF1 S11 S17 H4TR1, noc
